@@ -1,0 +1,6 @@
+[1212/094732:WARNING:in_range_cast.h(38)] value 504409755419149312 out of range
+[1212/094732:WARNING:in_range_cast.h(38)] value 4251461820868474880 out of range
+[1212/094732:WARNING:in_range_cast.h(38)] value 7998513886317800448 out of range
+[1212/094736:ERROR:process_reader_win.cc(233)] ReadMemory at 0x2f4000 of 114688 bytes failed: Only part of a ReadProcessMemory or WriteProcessMemory request was completed. (0x12B)
+[1212/094739:ERROR:crash_report_exception_handler.cc(98)] WriteEverything failed
+[1212/094739:ERROR:scoped_process_suspend.cc(38)] NtResumeProcess: An attempt was made to access an exiting process.  (0xc000010a)

@@ -1,0 +1,30 @@
+/* Empty. Add your own CSS if you like */
+.tabs .tab-item .icon.tab-markert-on, .tabs .tab-item .icon.tab-markert-off, .tabs .tab-item .icon.tab-customize-on, 
+.tabs .tab-item .icon.tab-customize-off 
+{
+    margin-top: 5px;
+    background-repeat: no-repeat;
+    background-position: 50%;
+    height: 60%;
+    background-size: contain;
+
+}
+
+.tabs .tab-item .icon.tab-markert-on {
+   
+    background-image: url('../img/stocks.png');
+}
+
+
+.tabs .tab-item .icon.tab-markert-off {
+   
+    background-image: url('../img/stocks.png');
+}
+
+.tabs .tab-item .icon.tab-customize-on {
+    background-image: url('../img/customize.png');
+}
+
+.tabs .tab-item .icon.tab-customize-off {
+    background-image: url('../img/customize.png');
+}

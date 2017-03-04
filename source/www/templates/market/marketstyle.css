@@ -1,0 +1,48 @@
+/* Empty. Add your own CSS if you like */
+
+.div-index {
+    float: left;
+    text-align: center;
+}
+
+.p-index {
+    color: black;
+    margin: 0 0 5px;
+}
+
+.div-splite {
+    float: left;
+    margin: 5px 0;
+    width: 1%;
+    height: 60px;
+    border-right: 1px solid #aaa;
+}
+
+.item.groupItem
+{
+	padding: 6px;
+}
+
+.items .item-content{
+    padding: 2px;
+}
+
+.button-add
+{
+	min-height: 10px;
+}
+
+/*animation style*/
+.list .item.item-accordion {
+  line-height: 25px;
+  padding-top: 0;
+  padding-bottom: 0;
+  transition: 0.09s all linear;
+}
+.list .item.item-accordion.ng-hide {
+  line-height: 0px;
+}
+.list .item.item-accordion.ng-hide-add,
+.list .item.item-accordion.ng-hide-remove {
+  display: block !important;
+}

@@ -1,0 +1,47 @@
+<ion-view view-title="{{stockDetail.name}}">
+    <!-- <ion-nav-bar> -->
+    <ion-nav-buttons side="left" >
+        <button class="button button-icon icon ion-ios-arrow-back" ng-click="goBack()">
+        <i style="display:block;float: right; line-height:30px;margin-left:3px;">Back</i>
+        </button>
+    </ion-nav-buttons>
+    <!-- </ion-nav-bar> -->
+    <ion-nav-buttons side="right">
+        <!--    <button ng-if="noAdded" menu-toggle="right" class="button button-clear button-positive" ng-click="addInMyStock()">加入自选</button> -->
+        <button class="button button-icon icon ion-navicon" ng-click="openPopover($event)"></button>
+    </ion-nav-buttons>
+    <script id="my-popover.html" type="text/ng-template">
+        <ion-popover-view style="width:120px;text-align:center;height:100px">
+            <ion-list>
+                <a class="item" ng-if="noAdded" ng-click="addOption()">
+                        加入自选
+                    </a>
+                <a class="item" ng-if="!noAdded" ng-click="deleteOption()">
+                        删除自选
+                    </a>
+                <a class="item" ng-click="cancel()">
+                        取消
+                    </a>
+            </ion-list>
+            </ion-content>
+        </ion-popover-view>
+    </script>
+    <ion-content class="padding" id="main-content">
+        <div align="left" class="chart-desc">
+             <div class="div-desc-one" ng-class="{0:'stable-color',1:'fall-color',2:'rise-color',}[stockDetail.trend]">
+             <p>{{stockDetail.lastPrice}}</p>
+                <p>
+                    <span>{{stockDetail.upsAndDowns}}</span>&nbsp;
+                    <span>{{stockDetail.rangeOfUpsAndDowns}}</span>
+                </p>
+            </div>
+            <div class="div-desc-two">
+                <div><ul><li>高&nbsp;<span id="maxvalue"></span></li><li>开&nbsp;<span id="openvalue"></span></li></ul></div>
+                <div><ul><li>低&nbsp;<span id="minvalue"></span></li><li></li></ul></div>
+            </div>
+        </div>
+        <div align="center" class="chart-panel" >
+            <div k-charts data-source='groupData' data-number='numData' data-five='maFiveData' class="div-chart" ></div>
+        </div>
+    </ion-content>
+</ion-view>

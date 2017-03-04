@@ -1,0 +1,68 @@
+<!-- <ion-view view-title="Market"> -->
+<ion-view view-title="行情">
+    <ion-nav-buttons side="right">
+        <button class="button button-icon icon ion-ios-search-strong" ng-click="searchModal.show()">
+        </button>
+    </ion-nav-buttons>
+    <ion-content>
+        <div style="margin-top:5px;">
+            <div style="width:50%;" class="div-index" ng-class="{0:'stable-color',1:'down-color',2:'up-color',}[isUpTrend(marketSummary.ShIndex.upsAndDowns)]">
+                <p class="p-index">上证指数</p>
+                <p style="margin:0 0 3px">{{marketSummary.ShIndex.index}}</p>
+                <p>
+                    <span>{{marketSummary.ShIndex.upsAndDowns}}</span>
+                    <span style="margin-left:5px">{{marketSummary.ShIndex.rangeOfUpsAndDowns}}</span>
+                </p>
+            </div>
+            <div class="div-splite"></div>
+            <div style="width:49%;" class="div-index" ng-class="{0:'stable-color',1:'down-color',2:'up-color',}[isUpTrend(marketSummary.SzIndex.upsAndDowns)]">
+                <p class="p-index">深证指数</p>
+                <p style="margin:0 0 3px">{{marketSummary.SzIndex.index}}</p>
+                <p>
+                    <span>{{marketSummary.SzIndex.upsAndDowns}}</span>
+                    <span style="margin-left:5px">{{marketSummary.SzIndex.rangeOfUpsAndDowns}}</span>
+                </p>
+            </div>
+        </div>
+        <ion-list>
+            <div ng-repeat="detail in marketDetails">
+                <ion-item class="item-stable groupItem" ng-click="toggleGroup(detail)" ng-class="{active: isGroupShown(detail)}">
+                    <i class="icon" ng-class="isGroupShown(detail) ? 'ion-chevron-down' : 'ion-chevron-right'"></i> &nbsp; {{detail.title}}
+                </ion-item>
+                <ion-item class="item-accordion items" ng-repeat="item in detail.details" ng-show="isGroupShown(detail)" ng-click="goDetail(item.id)">
+                    <div class="row" style="text-align: center;" ng-class="{0:'stable-color',1:'down-color',2:'up-color',}[isUpTrend(item.rangeOfUpsAndDowns)]">
+                        <div class="col-33" style="color:black">{{item.name}}</div>
+                        <div class="col-33">{{item.lastPrice}}</div>
+                        <div class="col-33">{{item.rangeOfUpsAndDowns}}</div>
+                    </div>
+                    <ion-option-button class="{{item.addButtonClass}}" ng-click="addToCustomize(item)">
+                        {{item.buttonTitle}}
+                    </ion-option-button>
+                </ion-item>
+            </div>
+        </ion-list>
+        <script id="search-modal.html" type="text/ng-template">
+            <ion-modal-view>
+                <ion-header-bar class="bar-stable" >
+                    <label class="item item-input " style="width:84%;height:32px;margin:3px;margin-top:24px;border-radius:6px;">
+                        <i class="icon ion-search placeholder-icon"></i>
+                        <input type="text" placeholder="Search" style=" line-height:30px;font-size:14px;padding-top:2px;" ng-model="searchStr.str"></input>
+                    </label>
+                    <label style="width:12%;text-align:center">
+                        <button class="button button-clear button-primary" ng-click="searchModal.hide()">关闭</button>
+                    </label>
+                </ion-header-bar>
+                <ion-content>
+                    <ion-list>
+                        <ion-item ng-repeat="item in serchResults | filter: sensitiveSearch | orderBy:'id'">
+                            <div class="row" style="text-align: center;">
+                                <div class="col-50">{{item.name}}</div>
+                                <div class="col-50">{{item.id}}</div>
+                            </div>
+                        </ion-item>
+                    </ion-list>
+                </ion-content>
+            </ion-modal-view>
+        </script>
+    </ion-content>
+</ion-view>

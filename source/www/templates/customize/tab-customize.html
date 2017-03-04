@@ -1,0 +1,48 @@
+<ion-view view-title="自选">
+    <ion-content class="option">
+    <div ng-if="noData" no-data-page></div>
+    <div ng-if="!noData">
+        <div class="sidebar">
+            <a ng-click="goDetail(item.id)" ng-repeat="item in optionContent ">
+              {{item.name}}
+            </a>
+        </div>
+        <div class="content">
+            <ion-scroll direction="x" scrollbar-x="false" style="overflow:hidden;white-space:nowrap; ">
+                <div class="row" style="height:40px;line-height:40px;">
+                    <div class="col-50 colTitle"  ng-click="sortFromPrice()" style="position:relative">
+                        <div class="col-demo"  >最新(价格)
+                          <i ng-show="showIconOfLastPrice" ng-class="{true:'icon ion-arrow-down-a',false:'icon ion-arrow-up-a'}[desOfLastPrice]" style="position:absolute;right:10px"></i>
+                        </div>
+
+                    </div>
+                    <div class="col-50 colTitle" ng-click="sortFromRange()" style="position:relative">
+                        <div class="col-demo" style="color:black">涨幅
+                        <i ng-show="showIconOfRange" ng-class="{true:'icon ion-arrow-down-a',false:'icon ion-arrow-up-a'}[desOfRange]" style="position:absolute;right:26px"></i>
+                         </div>
+                         
+                    </div>
+                    <div class="col-50 colTitle" ng-click="sortFromUpsAndDowns()"  style="position:relative">
+                        <div class="col-demo" style="color:black">涨跌
+                        <i ng-show="showIconOfUpsAndDowns" ng-class="{true:'icon ion-arrow-down-a',false:'icon ion-arrow-up-a'}[desOfUpsAndDowns]" style="position:absolute;right:26px"></i>
+                        </div>
+                    </div>
+                </div>
+                <a ng-click="goDetail(item.id)" ng-repeat="item in optionContent" ng-class="{true:'up-color',false:'down-color'}[item.isUpTrend]">
+                    <div class="row" >
+                        <div class="col-50 cloContent">
+                            <div class="col-demo">{{item.lastPrice}}</div>
+                        </div>
+                        <div class="col-50 cloContent">
+                            <div class="col-demo">{{item.rangeOfUpsAndDowns}}</div>
+                        </div>
+                        <div class="col-50 cloContent">
+                            <div class="col-demo">{{item.upsAndDowns}}</div>
+                        </div>
+                    </div>
+                </a>
+            </ion-scroll>
+        </div>
+    </div>
+    </ion-content>
+</ion-view>
